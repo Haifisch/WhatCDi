@@ -72,7 +72,7 @@
 {
     //int oldCount = self.thread.posts.count;
     
-    NSURLRequest *request = [[API sharedInterface] getInboxConversation:[NSString stringWithFormat:@"%i", self.thread.topicId]];
+    NSURLRequest *request = [[API sharedInterface] getInboxConversation:[NSString stringWithFormat:@"%li", (long)self.thread.topicId]];
     [API getRequest:request completionBlockWithJSON:^(id JSON) {
         
         NSDictionary *response = [JSON objectForKey:@"response"];

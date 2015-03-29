@@ -133,10 +133,10 @@
         [self setAlbumImageWithURL:_album.imageURL];
         [self.artistLabel setText:_album.artist];
         [self.albumLabel setText:_album.name];
-        [self.releasedLabel setText:[NSString stringWithFormat:@"Released %i", _album.year]];
+        [self.releasedLabel setText:[NSString stringWithFormat:@"Released %li", (long)_album.year]];
         
         NSString *release = ([[_album.torrentsDictionary allValues] count] != 1) ? @"releases" : @"release";
-        [self.fileCountLabel setText:[NSString stringWithFormat:@"%u %@", [[_album.torrentsDictionary allValues] count], release]];
+        [self.fileCountLabel setText:[NSString stringWithFormat:@"%lu %@", (unsigned long)[[_album.torrentsDictionary allValues] count], release]];
     }
     
     else

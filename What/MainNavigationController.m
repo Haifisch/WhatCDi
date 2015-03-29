@@ -30,7 +30,7 @@
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"../Images/navBar.png"] forBarMetrics:UIBarMetricsDefault];
     self.view.layer.masksToBounds = NO;
     self.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.navigationBar.layer.shadowOpacity = 0.3;
+    self.navigationBar.layer.shadowOpacity = (float)0.3;
     self.navigationBar.layer.shadowOffset = CGSizeMake(0,2);
     CGRect shadowPath = CGRectMake(self.navigationBar.layer.bounds.origin.x - 10, self.navigationBar.layer.bounds.size.height - 6, self.navigationBar.layer.bounds.size.width + 20, 5);
     self.navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:shadowPath].CGPath;

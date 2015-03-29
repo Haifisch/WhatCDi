@@ -44,7 +44,7 @@
 }
 
 - (void)updateTitle {
-    NSString *inboxWithMessages = [UserSingleton sharedInstance].newMessages > 0 ? [NSString stringWithFormat:@"Inbox (%i)", [UserSingleton sharedInstance].newMessages] : @"Inbox";
+    NSString *inboxWithMessages = [UserSingleton sharedInstance].newMessages > 0 ? [NSString stringWithFormat:@"Inbox (%li)", (long)[UserSingleton sharedInstance].newMessages] : @"Inbox";
     self.title = NSLocalizedString(inboxWithMessages, inboxWithMessages);
 }
 

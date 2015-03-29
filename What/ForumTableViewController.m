@@ -125,7 +125,7 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
     WCDThread *thread = [self.forum.threads objectAtIndex:indexPath.row];
-    NSInteger pageToOpen = ([UserSingleton sharedInstance].forumOpenTo == ForumOpenToFirstPage ? 1 : ceil(thread.postCount / 25.0)); //25 posts per page
+    NSInteger pageToOpen = ([UserSingleton sharedInstance].forumOpenTo == ForumOpenToFirstPage ? 1 : (long)ceil(thread.postCount / 25.0)); //25 posts per page
     ThreadTableViewController *threadController = [[ThreadTableViewController alloc] initWithThread:thread openToPage:pageToOpen];
     
     [self.navigationController pushViewController:threadController animated:YES];

@@ -161,7 +161,7 @@ a { color: #%@; }", self.bgColorHex, quoteColor[0], cCyanColor];
     if (self.shouldDynamicallyReloadHeight) {
         if (selfFrame.size.height != self.content.cellHeight) {
             NSLog(@"old: %ld    new: %f", (long)self.content.cellHeight, selfFrame.size.height);
-            self.content.cellHeight = selfFrame.size.height;
+            self.content.cellHeight = (long)selfFrame.size.height;
             [NSObject cancelPreviousPerformRequestsWithTarget:[self class]];
             [[self class] performSelector:@selector(refreshParentTable:) withObject:self afterDelay:0.2];
         }

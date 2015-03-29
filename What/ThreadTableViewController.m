@@ -146,7 +146,7 @@ static CGFloat const kPageControlsHeight = 40.f;
 
 //TODO push new controller for each new page?
 -(void)loadThreadPage:(NSInteger)page {
-    NSURLRequest *request = [[API sharedInterface] getForumThreadView:[NSString stringWithFormat:@"%i", self.thread.topicId] postId:@"" page:[NSString stringWithFormat:@"%i", page]];
+    NSURLRequest *request = [[API sharedInterface] getForumThreadView:[NSString stringWithFormat:@"%li", (long)self.thread.topicId] postId:@"" page:[NSString stringWithFormat:@"%i", page]];
     [API getRequest:request completionBlockWithJSON:^(id JSON) {
         
         NSDictionary *JSONdict = (NSDictionary *)JSON;

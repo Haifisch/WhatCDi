@@ -314,9 +314,9 @@
 -(void)refresh
 {
     //save this for reloading sections
-    int oldKeys = self.album.torrentsDictionary.allKeys.count;
+    int oldKeys = (int)self.album.torrentsDictionary.allKeys.count;
     
-    NSURLRequest *request = [[API sharedInterface] getTorrentInfo:[NSString stringWithFormat:@"%i", self.album.idNum]];
+    NSURLRequest *request = [[API sharedInterface] getTorrentInfo:[NSString stringWithFormat:@"%li", (long)self.album.idNum]];
     [API getRequest:request completionBlockWithJSON:^(id JSON) {
     
         NSDictionary *response = [JSON objectForKey:wRESPONSE];
@@ -388,7 +388,7 @@
             NSMutableString *releaseString;
             if (torrent.remastered) {
                 
-                releaseString = [NSMutableString stringWithFormat:@"%i - ", torrent.remasterYear];
+                releaseString = [NSMutableString stringWithFormat:@"%li - ", (long)torrent.remasterYear];
                 if (torrent.remasterRecordLabel.length > 0)
                     [releaseString appendFormat:@"%@", torrent.remasterRecordLabel];
                 if (torrent.remasterCatalogueNumber.length > 0)
@@ -496,7 +496,7 @@
     if ([[GoogleDrive sharedDrive] isAuthorized]) {
         WCDTorrent *torrent = [(AlbumTorrentDownloadButton *)sender torrent];
         
-        NSURLRequest *request = [[HTTPRequestSingleton sharedClient] requestWithMethod:@"GET" path:[NSString stringWithFormat:@"/torrents.php?action=download&id=%i&authkey=%@", torrent.idNum, [UserSingleton sharedInstance].authkey] parameters:nil];        
+        NSURLRequest *request = [[HTTPRequestSingleton sharedClient] requestWithMethod:@"GET" path:[NSString stringWithFormat:@"/torrents.php?action=download&id=%li&authkey=%@", (long)torrent.idNum, [UserSingleton sharedInstance].authkey] parameters:nil];
         
         NSString *appDocPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *tmpPath = [appDocPath stringByAppendingPathComponent:@"tmp"];
@@ -507,7 +507,7 @@
         NSString *torrentReleaseType = torrent.mediaType;
         NSString *torrentFormat = torrent.format;
         NSString *torrentBitrate = torrent.encoding;
-        NSMutableString *fileName = [NSMutableString stringWithFormat:@"%@ - %@ - %i (%@ - %@ - %@).torrent", torrentArtist, torrentName, torrentYear, torrentReleaseType, torrentFormat, torrentBitrate];
+        NSMutableString *fileName = [NSMutableString stringWithFormat:@"%@ - %@ - %li (%@ - %@ - %@).torrent", torrentArtist, torrentName, (long)torrentYear, torrentReleaseType, torrentFormat, torrentBitrate];
         
         NSString *filePath = [tmpPath stringByAppendingPathComponent:fileName];
         

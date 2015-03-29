@@ -342,7 +342,7 @@
             //default error message
             default:
                 title = @"Something Has Gone Terribly Wrong!";
-                subtitle = [NSString stringWithFormat:@"I'm just not exactly sure what it is. Error code: %i", error.code];
+                subtitle = [NSString stringWithFormat:@"I'm just not exactly sure what it is. Error code: %li", (long)error.code];
                 break;
         }
     }
